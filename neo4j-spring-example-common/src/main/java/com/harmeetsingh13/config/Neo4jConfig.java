@@ -3,6 +3,8 @@
  */
 package com.harmeetsingh13.config;
 
+import javax.annotation.Resource;
+
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,21 +31,21 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableNeo4jRepositories(basePackages = "com.harmeetsingh13.repository")
 public class Neo4jConfig extends Neo4jAspectConfiguration{
 
-	@Autowired
+	@Resource
 	private Environment env; 
 	
 	public Neo4jConfig() {
 		setBasePackage("com.harmeetsingh13.entities");
 	}
 	
-	@Bean
+	@Bean(name = "graphDatabaseService")
 	public GraphDatabaseService getGraphDatabaseService(){
 		GraphDatabaseFactory databaseService = new GraphDatabaseFactory();
 		return databaseService.newEmbeddedDatabase(env.getProperty("db.store.directory"));
 	}
 	
-	@Bean
 	@Autowired
+	@Bean(name = "jtaTransactionManagerFactoryBean")
 	public JtaTransactionManagerFactoryBean neo4jTransactionManagerFactoryBean
 		(GraphDatabaseService graphDatabaseService) throws Exception {
 		JtaTransactionManagerFactoryBean factoryBean = 
@@ -52,11 +54,10 @@ public class Neo4jConfig extends Neo4jAspectConfiguration{
 	}
 	
 	@Autowired
-	@Bean(name="transactionManager")
+	@Bean(name= {"neo4jTransactionManager"})
 	public PlatformTransactionManager getTransactionManager
 		(JtaTransactionManagerFactoryBean jtaTransactionManagerFactoryBean) throws Exception {
-		ChainedTransactionManager transactionManager = 
-					new ChainedTransactionManager(jtaTransactionManagerFactoryBean.getObject());
+		ChainedTransactionManager transactionManager = new ChainedTransactionManager(jtaTransactionManagerFactoryBean.getObject());
 		return transactionManager;
 	}
 }
