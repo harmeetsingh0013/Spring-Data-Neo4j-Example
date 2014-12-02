@@ -24,14 +24,14 @@ import com.harmeetsingh13.repository.RepositoryMovie;
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-//@Transactional(value = "neo4jTransactionManager")
-@ContextConfiguration(classes = Neo4jConfig.class, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {Neo4jConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class NodePersistenceTest {
 
 	@Autowired
 	private Neo4jTemplate neo4jTemplate;
 	@Autowired
 	private RepositoryMovie movieRepo;
+	private long graphId;
 	
 	@Test
 	@Transactional
@@ -40,13 +40,14 @@ public class NodePersistenceTest {
 		movie.setId(13L);
 		movie.setTitle("Dark Knight");
 		Movie returnMovie = neo4jTemplate.save(movie);
-		
+		graphId = returnMovie.getGraphId();
+		System.out.println(returnMovie.getGraphId());
 		assertThat(returnMovie, notNullValue());
 	}
 	
 	@Test
 	public void getObjectFromRepo() {
-		Movie movie = movieRepo.findBySchemaPropertyValue("id", 13);
+		Movie movie = movieRepo.findOne(graphId);
 		
 		assertThat(movie, notNullValue());
 	}

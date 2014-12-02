@@ -18,7 +18,7 @@ import com.harmeetsingh13.entities.utils.RelationshipTypes;
  *
  */
 @NodeEntity
-@EqualsAndHashCode(callSuper = true, exclude = {"movies"})
+@EqualsAndHashCode(callSuper = true, exclude = {"name", "movies"})
 public class Person extends BaseEntity{
 
 	@Getter @Setter

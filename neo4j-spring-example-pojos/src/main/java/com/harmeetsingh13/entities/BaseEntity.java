@@ -4,6 +4,8 @@
 package com.harmeetsingh13.entities;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import org.springframework.data.neo4j.annotation.GraphId;
 
@@ -15,5 +17,6 @@ import org.springframework.data.neo4j.annotation.GraphId;
 public abstract class BaseEntity {
 
 	@GraphId
+	@Getter @Setter
 	private Long graphId;
 }
