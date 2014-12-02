@@ -1,6 +1,6 @@
 Spring-Data-Neo4j-Example
 =========================
-These are the links, that i follow: 
+These are the links, that i follow for build the example of Spring-Data-Neo4j. But still this project is underconstruction. 
 
 1. http://stackoverflow.com/questions/12749747/how-to-get-spring-data-neo4j-and-spring-data-jpa-to-work-together
 
