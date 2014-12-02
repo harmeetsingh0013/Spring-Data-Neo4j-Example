@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedToVia;
@@ -27,15 +28,15 @@ public class Person extends BaseEntity{
 	@Getter @Setter
 	private String name;
 	@Getter @Setter
-	@RelatedToVia(type = RelationshipTypes.ACTED_IN)
+	@RelatedToVia(type = RelationshipTypes.ACTED_IN, direction = Direction.OUTGOING, elementClass = ActedInRelationship.class)
 	private Set<ActedInRelationship> movies = new HashSet<ActedInRelationship>();
 	
-	public ActedInRelationship playIn(Movie movie, String title) {
-		ActedInRelationship actedInRelationship = new ActedInRelationship();
-		actedInRelationship.setRoles("Machine");
-		actedInRelationship.setMovie(movie);
-		actedInRelationship.setPerson(this);
-		this.movies.add(actedInRelationship);
-		return actedInRelationship;
+	public ActedInRelationship actedIn(Movie movie, String roleName) {
+		ActedInRelationship relationship = new ActedInRelationship();
+		relationship.setMovie(movie);
+		relationship.setPerson(this);
+		relationship.setRoles(roleName);
+		this.movies.add(relationship);
+		return relationship;
 	}
 }
