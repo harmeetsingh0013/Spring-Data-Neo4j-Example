@@ -22,6 +22,7 @@ import com.harmeetsingh13.entities.Person;
 import com.harmeetsingh13.entities.utils.RelationshipTypes;
 import com.harmeetsingh13.maintainrelationship.CreateEntitiesRelationship;
 import com.harmeetsingh13.repository.RepositoryMovie;
+import com.harmeetsingh13.repository.RepositoryPerson;
 
 /**
  * @author Harmeet Singh(Taara)
@@ -35,6 +36,8 @@ public class NodePersistenceTest {
 	private Neo4jTemplate neo4jTemplate;
 	@Autowired
 	private RepositoryMovie movieRepo;
+	@Autowired
+	private RepositoryPerson actorRepo;
 	@Autowired
 	private CreateEntitiesRelationship entitiesRelationship;
 	
@@ -62,15 +65,22 @@ public class NodePersistenceTest {
 		actor.setId(9L);
 		actor.setName("Harmeet Singh");
 		
+		/* For create relationship between nodes, firstly we need to persist both nodes, because when we persist the relationship entity 
+		 * internally, they fetch start-node and end-node from its persistence state. when we are not persist the nodes, it will throw an 
+		 * NullPointerException . When we persist the relationship entity internally they use following method
+		 * Relationship	createRelationshipBetween(Node startNode, Node endNode, String relationshipType, Map<String,Object> properties)*/
+		neo4jTemplate.save(movie);
+		neo4jTemplate.save(actor);
+		
 		ActedInRelationship relationship = actor.actedIn(movie, RelationshipTypes.ACTED_IN);
 		neo4jTemplate.save(relationship);
 		
 		//assertThat(returnRelationship, notNullValue());
 	}
 	
-	//@Test
+	@Test
 	@Transactional
-	public void createRelationShipBetweenEntities() {
+	public void createRelationShipUsingServiceLayer() {
 		Movie movie = new Movie();
 		movie.setId(13L);
 		movie.setTitle("Dark Knight");
@@ -78,6 +88,9 @@ public class NodePersistenceTest {
 		Person actor = new Person();
 		actor.setId(9L);
 		actor.setName("Harmeet Singh");
+		
+		neo4jTemplate.save(movie);
+		neo4jTemplate.save(actor);
 		
 		ActedInRelationship relationship =  entitiesRelationship.createRelationshipBetweenPersonMovie(actor, movie, ActedInRelationship.class, RelationshipTypes.ACTED_IN);
 		
