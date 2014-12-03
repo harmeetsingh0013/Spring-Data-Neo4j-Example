@@ -50,6 +50,16 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!-- Miscellaneous -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.trove4j</groupId>
+			<artifactId>trove4j</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

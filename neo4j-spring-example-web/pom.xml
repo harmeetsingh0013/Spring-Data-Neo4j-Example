@@ -8,4 +8,111 @@
 	</parent>
 	<artifactId>neo4j-spring-example-web</artifactId>
 	<packaging>war</packaging>
+
+	<developers>
+		<developer>
+			<email>harmeetsingh.0013@gmail.com</email>
+			<name>Harmeet Singh(Taara)</name>
+			<roles>
+				<role>JavaEE Developer</role>
+			</roles>
+			<url>harmeetsingh13.blogspot.in</url>
+		</developer>
+	</developers>
+
+	<properties>
+		<custom>0.0.1-SNAPSHOT</custom>
+	</properties>
+
+	<dependencies>
+		<!-- Custom Dependencies -->
+		<dependency>
+			<groupId>com.harmeetsingh13.neo4jexample</groupId>
+			<artifactId>neo4j-spring-example-common</artifactId>
+			<version>${custom}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.harmeetsingh13.neo4jexample</groupId>
+			<artifactId>neo4j-spring-example-pojos</artifactId>
+			<version>${custom}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.harmeetsingh13.neo4jexample</groupId>
+			<artifactId>neo4j-spring-example-dao</artifactId>
+			<version>${custom}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.harmeetsingh13.neo4jexample</groupId>
+					<artifactId>neo4j-spring-example-common</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.harmeetsingh13.neo4jexample</groupId>
+					<artifactId>neo4j-spring-example-pojos</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.harmeetsingh13.neo4jexample</groupId>
+			<artifactId>neo4j-spring-example-service</artifactId>
+			<version>${custom}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.harmeetsingh13.neo4jexample</groupId>
+					<artifactId>neo4j-spring-example-common</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.harmeetsingh13.neo4jexample</groupId>
+					<artifactId>neo4j-spring-example-pojos</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.harmeetsingh13.neo4jexample</groupId>
+					<artifactId>neo4j-spring-example-dao</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Spring WEB -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+
+		<!-- Spring Transaction, Spring Data and Aspects -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-neo4j-aspects</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-neo4j-tx</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

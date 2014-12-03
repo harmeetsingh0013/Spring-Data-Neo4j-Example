@@ -183,7 +183,7 @@
 				<version>${spring-common}</version>
 			</dependency>
 
-			<!-- Spring Transaction and Spring Data -->
+			<!-- Spring Transaction, Spring Data and Aspects -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-tx</artifactId>

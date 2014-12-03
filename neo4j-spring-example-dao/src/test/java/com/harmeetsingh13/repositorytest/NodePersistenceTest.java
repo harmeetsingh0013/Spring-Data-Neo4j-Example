@@ -47,7 +47,7 @@ public class NodePersistenceTest {
 		Movie movie = new Movie();
 		movie.setId(13L);
 		movie.setTitle("Dark Knight");
-		Movie returnMovie = neo4jTemplate.save(movie);
+		Movie returnMovie = movieRepo.save(movie);
 		
 		Movie findMovie = movieRepo.findOne(returnMovie.getGraphId());
 		System.out.println(findMovie);
