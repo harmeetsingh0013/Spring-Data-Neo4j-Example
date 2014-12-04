@@ -5,8 +5,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Form</h1>
-	<form action="#" th:action="@{/save-person}" th:object="actor" method="post">
+	<h1>Enter Person Detail</h1>
+	<form action="#" th:action="@{/save-person}" th:object="${actor}" method="post">
 		<p>
 			Id: <input type="text" th:field="*{id}" />
 		</p>
@@ -15,6 +15,9 @@
 		</p>
 		<p>
 			<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+		</p>
+		<p>
+			<a th:href="@{/find-person-by-id}">Find Person By Id</a>
 		</p>
 	</form>
 </body>

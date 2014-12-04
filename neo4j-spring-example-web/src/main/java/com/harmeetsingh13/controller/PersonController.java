@@ -33,6 +33,18 @@ public class PersonController {
 	public String savePerson(Person person, Model model) {
 		Person returnPerson = personService.save(person);
 		model.addAttribute("actor", returnPerson);
-		return "person/person-detail";
+		return "person/view-person-detail";
+	}
+	
+	@RequestMapping(value="find-person-by-id", method=RequestMethod.GET)
+	public String findPersonById(Model model) {
+		return "person/find-person-by-id";
+	}
+	
+	@RequestMapping(value="find-person-by-id", method=RequestMethod.POST)
+	public String findPersonById(long id, Model model) {
+		Person person =  personService.findPersonByProperty("id", id);
+		model.addAttribute("actor", person);
+		return "person/view-person-detail";
 	}
 }

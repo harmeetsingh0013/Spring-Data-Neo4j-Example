@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>View Person Detail</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Person Detail</h1>
+	<p th:text="'Id: ' + ${actor.id}" />
+	<p th:text="'Name ' + ${actor.name}" />
+	<a th:href="@{/save-person}">Save Another Person</a>
+</body>
+</html>

@@ -34,7 +34,6 @@ public class GenericServiceImpl<T, R extends GraphRepository<T>> implements Gene
 	
 	@Override
 	public T save(T entity) {
-		return repository.save((T) genericType);
+		return repository.save(entity);
 	}
-
 }
