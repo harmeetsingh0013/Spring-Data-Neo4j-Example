@@ -15,6 +15,7 @@ import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedToVia;
 
+import com.harmeetsingh13.entities.relationship.ActedInRelationship;
 import com.harmeetsingh13.entities.utils.RelationshipTypes;
 
 /**

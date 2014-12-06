@@ -1,13 +1,28 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>View Person Detail</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>View Person Detail</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<h1>Person Detail</h1>
 	<p th:text="'Id: ' + ${actor.id}" />
 	<p th:text="'Name ' + ${actor.name}" />
-	<a th:href="@{/save-person}">Save Another Person</a>
+	<p> Friends Names </p>
+	<table>
+		<tbody>
+			<th:block th:each="friend: ${personFriends}">
+			<tr>
+				<td th:text="${friend.person.name}"> </td>
+			</tr>
+			</th:block>
+		</tbody>
+	</table>
+	<p>
+		<a th:href="@{/save-person}">Save Another Person</a>
+	</p>
+	<p>
+		<a th:href="@{/make-friends}">Makes Friends</a>
+	</p>
 </body>
 </html>

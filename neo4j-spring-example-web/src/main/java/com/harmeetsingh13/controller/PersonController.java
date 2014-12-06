@@ -3,11 +3,14 @@
  */
 package com.harmeetsingh13.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.harmeetsingh13.entities.Person;
 import com.harmeetsingh13.service.PersonService;
@@ -45,6 +48,24 @@ public class PersonController {
 	public String findPersonById(long id, Model model) {
 		Person person =  personService.findPersonByProperty("id", id);
 		model.addAttribute("actor", person);
+		model.addAttribute("personFriends", person.getFriends());
+		return "person/view-person-detail";
+	}
+	
+	@RequestMapping(value="make-friends", method=RequestMethod.GET)
+	public String makeFriends(Model model){
+		List<Person> persons = personService.getAllPersons();
+		model.addAttribute("persons", persons);
+		return "person/make-friends";
+	}
+	
+	@RequestMapping(value="make-friends", method=RequestMethod.POST)
+	public String makeFriends(long personId, long friendId, String friendshipType, Model model) {
+		Person person = personService.findPersonByProperty("id", personId);
+		Person friend = personService.findPersonByProperty("id", friendId);
+		personService.makeFriends(person, friend, friendshipType);
+		model.addAttribute("actor", person);
+		model.addAttribute("personFriends", person.getFriends());
 		return "person/view-person-detail";
 	}
 }

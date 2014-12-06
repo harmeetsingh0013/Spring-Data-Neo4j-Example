@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.harmeetsingh13.entities;
+package com.harmeetsingh13.entities.relationship;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +10,9 @@ import org.springframework.data.neo4j.annotation.EndNode;
 import org.springframework.data.neo4j.annotation.RelationshipEntity;
 import org.springframework.data.neo4j.annotation.StartNode;
 
+import com.harmeetsingh13.entities.BaseEntity;
+import com.harmeetsingh13.entities.Movie;
+import com.harmeetsingh13.entities.Person;
 import com.harmeetsingh13.entities.utils.RelationshipTypes;
 
 /**

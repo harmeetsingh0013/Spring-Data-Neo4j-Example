@@ -6,12 +6,15 @@ import java.util.Set;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedToVia;
 
+import com.harmeetsingh13.entities.relationship.ActedInRelationship;
+import com.harmeetsingh13.entities.relationship.FriendsRelationship;
 import com.harmeetsingh13.entities.utils.RelationshipTypes;
 
 /**
@@ -19,6 +22,7 @@ import com.harmeetsingh13.entities.utils.RelationshipTypes;
  *
  */
 @NodeEntity
+@ToString(callSuper=true, exclude={"movies"})
 @EqualsAndHashCode(callSuper = true, exclude = {"name", "movies"})
 public class Person extends BaseEntity{
 
@@ -30,6 +34,9 @@ public class Person extends BaseEntity{
 	@Getter @Setter
 	@RelatedToVia(type = RelationshipTypes.ACTED_IN, direction = Direction.OUTGOING, elementClass = ActedInRelationship.class)
 	private Set<ActedInRelationship> movies = new HashSet<ActedInRelationship>();
+	@Getter @Setter
+	@RelatedToVia(type = RelationshipTypes.FRIEND, elementClass = FriendsRelationship.class, direction = Direction.BOTH)
+	private Set<FriendsRelationship> friends;
 	
 	public ActedInRelationship actedIn(Movie movie, String roleName) {
 		ActedInRelationship relationship = new ActedInRelationship();

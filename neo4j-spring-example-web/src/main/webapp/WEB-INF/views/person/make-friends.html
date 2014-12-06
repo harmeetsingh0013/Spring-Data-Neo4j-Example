@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Graph Database Demo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Make Friends</h1> 
+	<p> Select Person from list 1 and list 2 and make friends together. </p>
+	<form action="#" th:action="@{/make-friends}" method="post">
+		<p>
+			Person List 1: 	<select name="personId">
+								<option th:each = "person: ${persons}" th:value="${person.id}" th:text="${person.name}"> </option>
+							</select>
+		</p>
+		<p>
+			Person List 2: <select name="friendId">
+								<option th:each = "person: ${persons}" th:value="${person.id}" th:text="${person.name}"> </option>
+							</select>
+		</p>
+		<p>
+			Friends Ship Type: <select name="friendshipType">
+									<option value="CLOSE-FRIEND">CLOSE-FRIEND</option>
+									<option value="BEST_FRIEND">BEST-FRIEND</option>
+									<option value="FRIEND">FRIEND</option>
+								</select>
+		</p>
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+		</p>
+		<p>
+			<a th:href="@{/find-person-by-id}">Find Person By Id</a>
+		</p>
+		<p>
+			<a th:href="@{/save-person}">Save Person</a>
+		</p>
+	</form>
+</body>
+</html>
