@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.harmeetsingh13.entities.Person;
 import com.harmeetsingh13.service.PersonService;
@@ -67,5 +66,19 @@ public class PersonController {
 		model.addAttribute("actor", person);
 		model.addAttribute("personFriends", person.getFriends());
 		return "person/view-person-detail";
+	}
+	
+	@RequestMapping(value="remove-person", method=RequestMethod.GET)
+	public String removePerson(Model model) {
+		List<Person> persons = personService.getAllPersons();
+		model.addAttribute("persons", persons);
+		return "person/remove-person";
+	}
+	
+	@RequestMapping(value="remove-person", method=RequestMethod.POST)
+	public String removePerson(long personId) {
+		Person person = personService.findPersonByProperty("id", personId);
+		personService.removePerson(person);
+		return "redirect:/remove-person";
 	}
 }

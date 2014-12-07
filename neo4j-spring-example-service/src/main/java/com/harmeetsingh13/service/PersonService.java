@@ -18,4 +18,5 @@ public interface PersonService{
 	public Person findPersonByProperty(String property, Object value);
 	public List<Person> getAllPersons();
 	public FriendsRelationship makeFriends(Person person, Person friend, String friendshipType);
+	public void removePerson(Person person);
 }

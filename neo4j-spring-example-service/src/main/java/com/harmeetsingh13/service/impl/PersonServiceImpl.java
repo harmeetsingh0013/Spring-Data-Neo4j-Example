@@ -75,4 +75,12 @@ public class PersonServiceImpl implements PersonService{
 		}
 		return relationship;
 	}
+
+	@Override
+	public void removePerson(Person person) {
+		try(Transaction transaction = graphDatabase.beginTx()){
+			repositoryPerson.delete(person);
+			transaction.success();
+		}
+	}
 }

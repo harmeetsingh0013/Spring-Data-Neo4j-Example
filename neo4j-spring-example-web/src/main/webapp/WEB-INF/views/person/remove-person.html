@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Graph Database Demo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Remove Person</h1> 
+	<form action="#" th:action="@{/remove-person}" method="post">
+		<p>
+			Select Person For Remove: 	<select name="personId">
+								<option th:each = "person: ${persons}" th:value="${person.id}" th:text="${person.name}"> </option>
+							</select>
+		</p>
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+		</p>
+		<p>
+			<a th:href="@{/find-person-by-id}">Find Person By Id</a>
+		</p>
+		<p>
+			<a th:href="@{/save-person}">Save Person</a>
+		</p>
+	</form>
+</body>
+</html>

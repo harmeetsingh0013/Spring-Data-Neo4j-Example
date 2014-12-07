@@ -1,15 +1,11 @@
 Spring-Data-Neo4j-Example
 =========================
-These are the links, that i follow for build the example of Spring-Data-Neo4j. But still this project is underconstruction. 
+In this example following is my technology stack: 
+1. Spring-Data-Neo4j 
+2. Thymeleaf
+3. Project Lambok (NOTE: For project lambok firstly you need to configure project lambok with eclipse)
+4. JDK 8
+5. Google Guava
 
-1. http://stackoverflow.com/questions/12749747/how-to-get-spring-data-neo4j-and-spring-data-jpa-to-work-together
-
-2. http://java.dzone.com/articles/spring-data-neo4j?page=0,0
-
-3. http://docs.spring.io/spring-data/neo4j/docs/3.1.4.RELEASE/reference/html/programming-model.html
-
-4. http://docs.spring.io/spring-data/neo4j/docs/current/reference/html/#reference_aspectj-details
-
-5. http://docs.spring.io/spring-data/neo4j/docs/current/reference/html/
-
-6. http://docs.spring.io/spring-data/neo4j/docs/2.3.0.RELEASE/reference/html/setup.html
+Import project as a maven, but before import project need to configure Project lambok(http://projectlombok.org/) with eclipse. In this we are 
+trying to use neo4j embedded database. Change the path of database according to your system from "db.properties" file. In this, when we run test case, the test cases are run successfully but data is not permanently persist in database. When our run the application, and trying to persist the data, then the data is persist successfully. If you want to check UI for database, set neo4j-community application and set the path of your database. Make the queries using application and checkout the visualization of nodes and relationship. 
