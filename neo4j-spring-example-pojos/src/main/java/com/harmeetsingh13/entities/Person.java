@@ -22,8 +22,8 @@ import com.harmeetsingh13.entities.utils.RelationshipTypes;
  *
  */
 @NodeEntity
-@ToString(callSuper=true, exclude={"movies"})
-@EqualsAndHashCode(callSuper = true, exclude = {"name", "movies"})
+@ToString(callSuper=true, exclude={"movies", "friends"})
+@EqualsAndHashCode(callSuper = true, exclude = {"name", "movies", "friends"})
 public class Person extends BaseEntity{
 
 	@Getter @Setter
@@ -35,7 +35,7 @@ public class Person extends BaseEntity{
 	@RelatedToVia(type = RelationshipTypes.ACTED_IN, direction = Direction.OUTGOING, elementClass = ActedInRelationship.class)
 	private Set<ActedInRelationship> movies = new HashSet<ActedInRelationship>();
 	@Getter @Setter
-	@RelatedToVia(type = RelationshipTypes.FRIEND, elementClass = FriendsRelationship.class, direction = Direction.BOTH)
+	@RelatedToVia(direction = Direction.BOTH)
 	private Set<FriendsRelationship> friends;
 	
 	public ActedInRelationship actedIn(Movie movie, String roleName) {

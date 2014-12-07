@@ -27,14 +27,14 @@ public class PersonController {
 	
 	@RequestMapping(value="save-person", method=RequestMethod.GET)
 	public String savePerson(Model model) {
-		model.addAttribute("actor", new Person());
+		model.addAttribute("person", new Person());
 		return "person/enter-person-detail";
 	}
 	
 	@RequestMapping(value="save-person", method=RequestMethod.POST)
 	public String savePerson(Person person, Model model) {
 		Person returnPerson = personService.save(person);
-		model.addAttribute("actor", returnPerson);
+		model.addAttribute("person", returnPerson);
 		return "person/view-person-detail";
 	}
 	
@@ -46,7 +46,7 @@ public class PersonController {
 	@RequestMapping(value="find-person-by-id", method=RequestMethod.POST)
 	public String findPersonById(long id, Model model) {
 		Person person =  personService.findPersonByProperty("id", id);
-		model.addAttribute("actor", person);
+		model.addAttribute("person", person);
 		model.addAttribute("personFriends", person.getFriends());
 		return "person/view-person-detail";
 	}
@@ -63,7 +63,7 @@ public class PersonController {
 		Person person = personService.findPersonByProperty("id", personId);
 		Person friend = personService.findPersonByProperty("id", friendId);
 		personService.makeFriends(person, friend, friendshipType);
-		model.addAttribute("actor", person);
+		model.addAttribute("person", person);
 		model.addAttribute("personFriends", person.getFriends());
 		return "person/view-person-detail";
 	}

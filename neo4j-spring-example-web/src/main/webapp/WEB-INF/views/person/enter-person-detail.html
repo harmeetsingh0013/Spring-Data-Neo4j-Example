@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Getting Started: Handing Form Submission</title>
+<title>Spring-Data-Neo4j Example</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 	<h1>Enter Person Detail</h1>
-	<form action="#" th:action="@{/save-person}" th:object="${actor}" method="post">
+	<form action="#" th:action="@{/save-person}" th:object="${person}" method="post">
 		<p>
 			Id: <input type="text" th:field="*{id}" />
 		</p>
@@ -16,12 +16,8 @@
 		<p>
 			<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 		</p>
-		<p>
-			<a th:href="@{/find-person-by-id}">Find Person By Id</a>
-		</p>
-		<p>
-			<a th:href="@{/remove-person}">Delete Person</a>
-		</p>
 	</form>
+	<h2>Menu: </h2>
+	<div th:replace="fragments/footer :: footer"></div> 
 </body>
 </html>

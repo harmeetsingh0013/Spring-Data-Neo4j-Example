@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.springframework.data.neo4j.annotation.EndNode;
+import org.springframework.data.neo4j.annotation.Fetch;
 import org.springframework.data.neo4j.annotation.RelationshipEntity;
 import org.springframework.data.neo4j.annotation.StartNode;
 
@@ -15,16 +16,16 @@ import com.harmeetsingh13.entities.Person;
 import com.harmeetsingh13.entities.utils.RelationshipTypes;
 
 /**
- * @author james
+ * @author Harmeet Singh(Taara)
  *
  */
 @RelationshipEntity(type=RelationshipTypes.FRIEND)
 public class FriendsRelationship extends BaseEntity{
 
-	@StartNode
+	@Fetch @StartNode
 	@Getter @Setter
 	private Person person;
-	@EndNode
+	@Fetch @EndNode
 	@Getter @Setter
 	private Person friend;
 	@Getter @Setter
