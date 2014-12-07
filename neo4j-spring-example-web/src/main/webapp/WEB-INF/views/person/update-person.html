@@ -5,15 +5,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Remove Person</h1> 
-	<form action="#" th:action="@{/remove-person}" method="post">
+	<h1>Update Person</h1> 
+	<form action="#" th:action="@{/update-person}" method="get">
 		<p>
-			Select Person For Remove: 	<select name="personId">
+			Select Person For Update: 	<select name="personId">
 								<option th:each = "person: ${persons}" th:value="${person.id}" th:text="${person.name}"> </option>
 							</select>
 		</p>
 		<p>
-			<input type="submit" value="Remove" /> &nbsp; <input type="reset" value="Reset" />
+			<input type="submit" value="Update" /> &nbsp; <input type="reset" value="Reset" />
 			
 		</p>
 		<h2>Menu: </h2>

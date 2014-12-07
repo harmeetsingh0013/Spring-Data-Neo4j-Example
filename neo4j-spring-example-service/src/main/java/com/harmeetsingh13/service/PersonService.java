@@ -19,4 +19,5 @@ public interface PersonService{
 	public List<Person> getAllPersons();
 	public FriendsRelationship makeFriends(Person person, Person friend, String friendshipType);
 	public void removePerson(Person person);
+	public Person updatePerson(Person person);
 }

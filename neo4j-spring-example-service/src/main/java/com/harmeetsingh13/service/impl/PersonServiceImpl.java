@@ -83,4 +83,14 @@ public class PersonServiceImpl implements PersonService{
 			transaction.success();
 		}
 	}
+
+	@Override
+	public Person updatePerson(Person person) {
+		Person returnValue = null;
+		try(Transaction transaction = graphDatabase.beginTx()){
+			returnValue = repositoryPerson.save(person);
+			transaction.success();
+		}
+		return returnValue;
+	}
 }
