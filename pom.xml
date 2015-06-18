@@ -44,7 +44,7 @@
 		<neo4j-common>2.1.5</neo4j-common>
 		<google-guava>18.0</google-guava>
 		<trove>3.0.3</trove>
-		<project-lambok>1.14.8</project-lambok>
+		<project-lambok>1.16.4</project-lambok>
 		<junit>4.11</junit>
 		<javax-validation>1.1.0.Final</javax-validation>
 		<jcl-slf4j>1.7.7</jcl-slf4j>

@@ -15,7 +15,7 @@ import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedToVia;
 
-import com.harmeetsingh13.entities.relationship.ActedInRelationship;
+import com.harmeetsingh13.entities.relationship.EmployeRelationship;
 import com.harmeetsingh13.entities.utils.RelationshipTypes;
 
 /**
@@ -23,15 +23,16 @@ import com.harmeetsingh13.entities.utils.RelationshipTypes;
  *
  */
 @NodeEntity
-@EqualsAndHashCode(callSuper=true, exclude={"title", "actors"})
-@ToString(callSuper=true, includeFieldNames=true, exclude="actors")
-public class Movie extends BaseEntity{
+@EqualsAndHashCode(callSuper=true, exclude={"name", "employes"})
+@ToString(callSuper=true, includeFieldNames=true, exclude="employes")
+public class Company extends BaseEntity{
 	
 	@Getter @Setter
 	@Indexed(unique=true)
 	private Long id;
 	@Getter @Setter
-	private String title;
-	@RelatedToVia(type = RelationshipTypes.ACTED_IN, direction = Direction.INCOMING, elementClass = ActedInRelationship.class)
-	private Set<ActedInRelationship> actors;
+	private String name;
+	
+	@RelatedToVia(type = RelationshipTypes.EMPLOYED_IN, direction = Direction.INCOMING, elementClass = EmployeRelationship.class)
+	private Set<EmployeRelationship> employes;
 }

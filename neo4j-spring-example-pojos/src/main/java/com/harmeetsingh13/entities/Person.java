@@ -13,7 +13,7 @@ import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedToVia;
 
-import com.harmeetsingh13.entities.relationship.ActedInRelationship;
+import com.harmeetsingh13.entities.relationship.EmployeRelationship;
 import com.harmeetsingh13.entities.relationship.FriendsRelationship;
 import com.harmeetsingh13.entities.utils.RelationshipTypes;
 
@@ -31,18 +31,20 @@ public class Person extends BaseEntity{
 	private Long id;
 	@Getter @Setter
 	private String name;
+	
 	@Getter @Setter
-	@RelatedToVia(type = RelationshipTypes.ACTED_IN, direction = Direction.OUTGOING, elementClass = ActedInRelationship.class)
-	private Set<ActedInRelationship> movies = new HashSet<ActedInRelationship>();
+	@RelatedToVia(type = RelationshipTypes.EMPLOYED_IN, direction = Direction.OUTGOING, elementClass = EmployeRelationship.class)
+	private Set<EmployeRelationship> movies = new HashSet<EmployeRelationship>();
+	
 	@Getter @Setter
-	@RelatedToVia(direction = Direction.BOTH)
+	@RelatedToVia(direction = Direction.OUTGOING)
 	private Set<FriendsRelationship> friends;
 	
-	public ActedInRelationship actedIn(Movie movie, String roleName) {
-		ActedInRelationship relationship = new ActedInRelationship();
-		relationship.setMovie(movie);
+	public EmployeRelationship employedAt(Company company, String roleName) {
+		EmployeRelationship relationship = new EmployeRelationship();
+		relationship.setCompany(company);
 		relationship.setPerson(this);
-		relationship.setRoles(roleName);
+		relationship.setRole(roleName);
 		this.movies.add(relationship);
 		return relationship;
 	}

@@ -11,7 +11,7 @@ import org.springframework.data.neo4j.annotation.RelationshipEntity;
 import org.springframework.data.neo4j.annotation.StartNode;
 
 import com.harmeetsingh13.entities.BaseEntity;
-import com.harmeetsingh13.entities.Movie;
+import com.harmeetsingh13.entities.Company;
 import com.harmeetsingh13.entities.Person;
 import com.harmeetsingh13.entities.utils.RelationshipTypes;
 
@@ -19,15 +19,15 @@ import com.harmeetsingh13.entities.utils.RelationshipTypes;
  * @author Harmeet Singh(Taara)
  *
  */
-@RelationshipEntity(type = RelationshipTypes.ACTED_IN)
-public class ActedInRelationship extends BaseEntity {
+@RelationshipEntity(type = RelationshipTypes.EMPLOYED_IN)
+public class EmployeRelationship extends BaseEntity {
 
 	@StartNode
 	@Getter @Setter
 	private Person person;
 	@EndNode
 	@Getter @Setter
-	private Movie movie;
+	private Company company;
 	@Getter @Setter
-	private String roles;
+	private String role;
 }

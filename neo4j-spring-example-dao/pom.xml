@@ -84,7 +84,7 @@
 			<groupId>org.neo4j</groupId>
 			<artifactId>neo4j-cypher</artifactId>
 		</dependency>
-
+		
 		<!-- Miscellaneous -->
 		<dependency>
 			<groupId>junit</groupId>

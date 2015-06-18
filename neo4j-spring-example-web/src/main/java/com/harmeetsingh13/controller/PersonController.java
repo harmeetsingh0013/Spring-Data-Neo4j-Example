@@ -26,7 +26,7 @@ public class PersonController {
 	@Autowired
 	private PersonService personService;
 	
-	@RequestMapping(value="save-person", method=RequestMethod.GET)
+	@RequestMapping(value={"/", "save-person"}, method=RequestMethod.GET)
 	public String savePerson(Model model) {
 		model.addAttribute("person", new Person());
 		return "person/enter-person-detail";

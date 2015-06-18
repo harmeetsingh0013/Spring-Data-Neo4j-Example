@@ -49,6 +49,14 @@ public class Neo4jConfig extends Neo4jAspectConfiguration{
 		return factoryBean;
 	}
 	
+	/*@Override
+	@Bean(name= {"transactionManager"})
+	@Resource(name="graphDatabaseService")
+	public PlatformTransactionManager neo4jTransactionManager(GraphDatabaseService graphDatabaseService) {
+		JtaTransactionManagerFactoryBean factoryBean = new JtaTransactionManagerFactoryBean(graphDatabaseService);
+		return factoryBean.getObject();
+	}*/
+	
 	@Override
 	@Bean(name= {"transactionManager"})
 	public PlatformTransactionManager neo4jTransactionManager() throws Exception {
