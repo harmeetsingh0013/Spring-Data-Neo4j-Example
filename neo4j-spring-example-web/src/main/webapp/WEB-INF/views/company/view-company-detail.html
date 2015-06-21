@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring-Data-Neo4j Example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style>
+		thead {color:green;}
+		tbody {color:blue;}
+		table,th,td {border:1px solid black;}
+		td { text-align: center; }
+	</style>
+</head>
+<body>
+	<h1>Company Detail</h1>
+	<p th:text="'Id: ' + ${company.id}" />
+	<p th:text="'Name: ' + ${company.name}" />
+	<h2> Friends Names </h2>
+	<table border="1" style="width:300px">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- <th:block th:each="employee: ${employees}">
+			<tr>
+				<td th:text="${employee.friend.id}"></td>
+				<td th:text="${employee.friend.name}"> </td>
+			</tr>
+			</th:block> -->
+		</tbody>
+	</table>
+	<h2>Menu: </h2>
+	<div th:replace="fragments/footer :: footer"></div> 
+</body>
+</html>

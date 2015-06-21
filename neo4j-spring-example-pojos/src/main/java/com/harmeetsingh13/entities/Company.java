@@ -5,18 +5,17 @@ package com.harmeetsingh13.entities;
 
 import java.util.Set;
 
+import org.neo4j.graphdb.Direction;
+import org.springframework.data.neo4j.annotation.Indexed;
+import org.springframework.data.neo4j.annotation.NodeEntity;
+import org.springframework.data.neo4j.annotation.RelatedTo;
+
+import com.harmeetsingh13.entities.utils.RelationshipTypes;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import org.neo4j.graphdb.Direction;
-import org.springframework.data.neo4j.annotation.Indexed;
-import org.springframework.data.neo4j.annotation.NodeEntity;
-import org.springframework.data.neo4j.annotation.RelatedToVia;
-
-import com.harmeetsingh13.entities.relationship.EmployeRelationship;
-import com.harmeetsingh13.entities.utils.RelationshipTypes;
 
 /**
  * @author Harmeet Singh(Taara)
@@ -33,6 +32,6 @@ public class Company extends BaseEntity{
 	@Getter @Setter
 	private String name;
 	
-	@RelatedToVia(type = RelationshipTypes.EMPLOYED_IN, direction = Direction.INCOMING, elementClass = EmployeRelationship.class)
-	private Set<EmployeRelationship> employes;
+	@RelatedTo(type=RelationshipTypes.EMPLOYED_IN, direction=Direction.INCOMING)
+	private Set<Person> employes;
 }

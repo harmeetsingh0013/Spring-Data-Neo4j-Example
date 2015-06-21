@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Spring-Data-Neo4j Example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Enter Company Detail</h1>
+	<form action="#" th:action="@{/create-company}" th:object="${company}" method="post">
+		<p>
+			Id: <input type="text" th:field="*{id}" />
+		</p>
+		<p>
+			Name: <input type="text" th:field="*{name}" />
+		</p>
+		<p>
+			<input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+		</p>
+	</form>
+	<h2>Menu: </h2>
+	<div th:replace="fragments/footer :: footer"></div> 
+</body>
+</html>

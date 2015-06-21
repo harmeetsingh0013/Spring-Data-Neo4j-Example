@@ -10,7 +10,6 @@ import org.neo4j.graphdb.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.neo4j.conversion.Result;
 import org.springframework.data.neo4j.core.GraphDatabase;
-import org.springframework.data.neo4j.support.Neo4jTemplate;
 import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
@@ -29,8 +28,6 @@ public class PersonServiceImpl implements PersonService{
 
 	@Autowired
 	private RepositoryPerson repositoryPerson;
-	@Autowired
-	private Neo4jTemplate template;
 	@Autowired
 	private GraphDatabase graphDatabase;
 	@Autowired

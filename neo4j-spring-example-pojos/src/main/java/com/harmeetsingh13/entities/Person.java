@@ -11,6 +11,7 @@ import lombok.ToString;
 import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
+import org.springframework.data.neo4j.annotation.RelatedTo;
 import org.springframework.data.neo4j.annotation.RelatedToVia;
 
 import com.harmeetsingh13.entities.relationship.EmployeRelationship;
@@ -22,8 +23,8 @@ import com.harmeetsingh13.entities.utils.RelationshipTypes;
  *
  */
 @NodeEntity
-@ToString(callSuper=true, exclude={"movies", "friends"})
-@EqualsAndHashCode(callSuper = true, exclude = {"name", "movies", "friends"})
+@ToString(callSuper=true, exclude={"company", "friends"})
+@EqualsAndHashCode(callSuper = true, exclude = {"name", "company", "friends"})
 public class Person extends BaseEntity{
 
 	@Getter @Setter
@@ -33,11 +34,11 @@ public class Person extends BaseEntity{
 	private String name;
 	
 	@Getter @Setter
-	@RelatedToVia(type = RelationshipTypes.EMPLOYED_IN, direction = Direction.OUTGOING, elementClass = EmployeRelationship.class)
-	private Set<EmployeRelationship> movies = new HashSet<EmployeRelationship>();
+	@RelatedTo(type = RelationshipTypes.EMPLOYED_IN)
+	private Set<Company> company = new HashSet<Company>();
 	
 	@Getter @Setter
-	@RelatedToVia(direction = Direction.OUTGOING)
+	@RelatedToVia(direction = Direction.OUTGOING, type = RelationshipTypes.FRIEND)
 	private Set<FriendsRelationship> friends;
 	
 	public EmployeRelationship employedAt(Company company, String roleName) {
@@ -45,7 +46,7 @@ public class Person extends BaseEntity{
 		relationship.setCompany(company);
 		relationship.setPerson(this);
 		relationship.setRole(roleName);
-		this.movies.add(relationship);
+		this.company.add(company);
 		return relationship;
 	}
 }
