@@ -5,7 +5,9 @@ package com.harmeetsingh13.service;
 
 import java.util.List;
 
+import com.harmeetsingh13.entities.Company;
 import com.harmeetsingh13.entities.Person;
+import com.harmeetsingh13.entities.relationship.EmployeRelationship;
 import com.harmeetsingh13.entities.relationship.FriendsRelationship;
 
 /**
@@ -20,4 +22,5 @@ public interface PersonService{
 	public FriendsRelationship makeFriends(Person person, Person friend, String friendshipType);
 	public void removePerson(Person person);
 	public Person updatePerson(Person person);
+	public EmployeRelationship employedAt(Company company, Person person, String roleName);
 }

@@ -13,7 +13,9 @@ import org.springframework.data.neo4j.core.GraphDatabase;
 import org.springframework.stereotype.Service;
 
 import com.google.common.collect.Lists;
+import com.harmeetsingh13.entities.Company;
 import com.harmeetsingh13.entities.Person;
+import com.harmeetsingh13.entities.relationship.EmployeRelationship;
 import com.harmeetsingh13.entities.relationship.FriendsRelationship;
 import com.harmeetsingh13.maintainrelationship.CreateEntitiesRelationship;
 import com.harmeetsingh13.repository.RepositoryPerson;
@@ -89,5 +91,17 @@ public class PersonServiceImpl implements PersonService{
 			transaction.success();
 		}
 		return returnValue;
+	}
+	
+	@Override
+	public EmployeRelationship employedAt(Company company, Person person, String roleName) {
+		EmployeRelationship relationship = new EmployeRelationship();
+		try(Transaction transaction = graphDatabase.beginTx()){
+			relationship.setCompany(company);
+			relationship.setPerson(person);
+			relationship.setRole(roleName);
+			person.getCompany().add(company);
+		}
+		return relationship;
 	}
 }

@@ -31,7 +31,7 @@ public class Company extends BaseEntity{
 	private Long id;
 	@Getter @Setter
 	private String name;
-	
+	@Getter @Setter
 	@RelatedTo(type=RelationshipTypes.EMPLOYED_IN, direction=Direction.INCOMING)
 	private Set<Person> employes;
 }

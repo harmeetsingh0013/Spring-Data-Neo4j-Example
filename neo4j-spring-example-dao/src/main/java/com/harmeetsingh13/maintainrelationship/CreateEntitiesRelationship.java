@@ -22,7 +22,7 @@ public class CreateEntitiesRelationship {
 	
 	public FriendsRelationship createRelationshipBetweenPersons(Person person, Person friend, 
 			Class<FriendsRelationship> relationshipEntity, String friendshipType) {
-		FriendsRelationship relationship = neo4jTemplate.createRelationshipBetween(person, friend, relationshipEntity, friendshipType, true);
+		FriendsRelationship relationship = neo4jTemplate.createRelationshipBetween(person, friend, relationshipEntity, friendshipType, false);
 		neo4jTemplate.save(relationship);
 		return relationship;
 	}

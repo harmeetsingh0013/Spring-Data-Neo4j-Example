@@ -14,7 +14,7 @@
 	<h1>Company Detail</h1>
 	<p th:text="'Id: ' + ${company.id}" />
 	<p th:text="'Name: ' + ${company.name}" />
-	<h2> Friends Names </h2>
+	<h2> Employees Names </h2>
 	<table border="1" style="width:300px">
 		<thead>
 			<tr>
@@ -23,12 +23,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<!-- <th:block th:each="employee: ${employees}">
+			<th:block th:each="employee: ${employees}">
 			<tr>
-				<td th:text="${employee.friend.id}"></td>
-				<td th:text="${employee.friend.name}"> </td>
+				<td th:text="${employee.id}"></td>
+				<td th:text="${employee.name}"> </td>
 			</tr>
-			</th:block> -->
+			</th:block>
 		</tbody>
 	</table>
 	<h2>Menu: </h2>

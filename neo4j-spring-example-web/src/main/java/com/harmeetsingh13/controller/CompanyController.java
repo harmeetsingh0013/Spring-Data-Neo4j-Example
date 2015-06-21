@@ -55,8 +55,11 @@ public class CompanyController {
 	public String makeEmployee(Model model, long empId, long companyId) {
 		Company company = companyService.findCompanyById(companyId);
 		Person person = personService.findPersonByProperty("id", empId);
-		person.employedAt(company, "Employee");
+		personService.employedAt(company, person, "Employee");
 		personService.updatePerson(person);
-		return "company/make-employee";
+		model.addAttribute("company", company);
+		System.out.println("******************************* : "+company.getEmployes().size());
+		model.addAttribute("employees", company.getEmployes());
+		return "company/view-company-detail";
 	}
 }

@@ -73,8 +73,8 @@ public class NodePersistenceTest {
 		neo4jTemplate.save(company);
 		neo4jTemplate.save(actor);
 		
-		EmployeRelationship relationship = actor.employedAt(company, RelationshipTypes.EMPLOYED_IN);
-		neo4jTemplate.save(relationship);
+		//EmployeRelationship relationship = actor.employedAt(company, RelationshipTypes.EMPLOYED_IN);
+		//neo4jTemplate.save(relationship);
 		
 		//assertThat(returnRelationship, notNullValue());
 	}

@@ -51,5 +51,4 @@ public class CompanyServiceImpl implements CompanyService{
 		return repositoryCompany.findOne(companyId);
 	}
 	
-	
 }
