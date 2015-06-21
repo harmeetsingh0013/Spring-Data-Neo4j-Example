@@ -32,8 +32,8 @@ public class Person extends BaseEntity{
 	private String name;
 	
 	@Getter @Setter
-	@RelatedTo(type = RelationshipTypes.EMPLOYED_IN)
-	private Set<Company> company;
+	@RelatedTo(type = RelationshipTypes.EMPLOYED_IN, direction = Direction.OUTGOING)
+	private Company company;
 	
 	@Getter @Setter
 	@RelatedToVia(direction = Direction.OUTGOING, type = RelationshipTypes.FRIEND)

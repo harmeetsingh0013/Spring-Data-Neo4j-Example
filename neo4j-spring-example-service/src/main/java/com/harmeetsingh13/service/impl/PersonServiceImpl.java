@@ -100,7 +100,7 @@ public class PersonServiceImpl implements PersonService{
 			relationship.setCompany(company);
 			relationship.setPerson(person);
 			relationship.setRole(roleName);
-			person.getCompany().add(company);
+			person.setCompany(company);
 		}
 		return relationship;
 	}

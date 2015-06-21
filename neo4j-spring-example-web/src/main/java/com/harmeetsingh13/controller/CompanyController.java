@@ -57,8 +57,8 @@ public class CompanyController {
 		Person person = personService.findPersonByProperty("id", empId);
 		personService.employedAt(company, person, "Employee");
 		personService.updatePerson(person);
+		company = companyService.findCompanyById(companyId);
 		model.addAttribute("company", company);
-		System.out.println("******************************* : "+company.getEmployes().size());
 		model.addAttribute("employees", company.getEmployes());
 		return "company/view-company-detail";
 	}
