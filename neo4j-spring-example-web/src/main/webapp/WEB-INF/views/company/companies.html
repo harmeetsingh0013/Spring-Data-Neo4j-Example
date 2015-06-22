@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Companies</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style>
+		thead {color:green;}
+		tbody {color:blue;}
+		table,th,td {border:1px solid black;}
+		td { text-align: center; }
+	</style>
+</head>
+<body>
+	<h1>Companies Detail</h1>
+	<table border="1" style="width:300px">
+		<thead>
+			<tr>
+				<th>Company ID</th>
+				<th>Company Name</th>
+				<th>Company Detail</th>
+			</tr>
+		</thead>
+		<tbody>
+			<th:block th:each="company: ${companies}">
+			<tr>
+				<td th:text="${company.id}"></td>
+				<td th:text="${company.name}"> </td>
+				<td><a th:href="@{/company-detail(companyId=${company.id})}">Detail.. </a></td>
+			</tr>
+			</th:block>
+		</tbody>
+	</table>
+	<h2>Menu: </h2>
+	<div th:replace="fragments/footer :: footer"></div> 
+</body>
+</html>

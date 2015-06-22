@@ -6,6 +6,7 @@ package com.harmeetsingh13.entities;
 import java.util.Set;
 
 import org.neo4j.graphdb.Direction;
+import org.springframework.data.neo4j.annotation.Fetch;
 import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
@@ -32,6 +33,6 @@ public class Company extends BaseEntity{
 	@Getter @Setter
 	private String name;
 	@Getter @Setter
-	@RelatedTo(type=RelationshipTypes.EMPLOYED_IN, direction=Direction.INCOMING)
+	@Fetch @RelatedTo(type=RelationshipTypes.EMPLOYED_IN, direction=Direction.INCOMING)
 	private Set<Person> employes;
 }

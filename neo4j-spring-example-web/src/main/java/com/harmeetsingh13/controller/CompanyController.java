@@ -62,4 +62,19 @@ public class CompanyController {
 		model.addAttribute("employees", company.getEmployes());
 		return "company/view-company-detail";
 	}
+	
+	@RequestMapping(value="companies", method=RequestMethod.GET)
+	public String allCompanies(Model model) {
+		List<Company> companies = companyService.findAllCompanies();
+		model.addAttribute("companies", companies);
+		return "company/companies";
+	}
+	
+	@RequestMapping(value="company-detail", method=RequestMethod.GET)
+	public String companyDetail(Model model, long companyId) {
+		Company company = companyService.findCompanyById(companyId);
+		model.addAttribute("company", company);
+		model.addAttribute("employees", company.getEmployes());
+		return "company/view-company-detail";
+	}
 }
